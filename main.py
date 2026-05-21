@@ -11,11 +11,12 @@ df.index = df.index.tz_convert('Asia/Tokyo')
 
 max_price = df['Close'].max().item()
 current = df['Close'].iloc[-1].item()
-std = df['Close'].rolling(window=25).std().iloc[-1].item()
+std = df['Close'].rolling(window=375).std().iloc[-1].item()
 current_dev = 50 - ((max_price - current) / std)
 
 # X軸の準備：直近168個のデータを使用
-tail_df = df.tail(168)
+tail_df = df.tail(168)375
+
 x = range(len(tail_df))
 dates = tail_df.index.strftime('%m/%d').tolist()
 
